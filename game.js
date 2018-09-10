@@ -20,23 +20,34 @@ $(document).ready(function(){
     //target word
     var targetWord;
 
-
+    //target word array
+    var displayWord = [];
 
     //function to pick a random word from foods array
     function randomWord(){
         targetWord = foods[Math.floor(Math.random() * foods.length)];
         $("#random-word").text(targetWord);
+
     };
 
     randomWord();
+
+    //function to replace the letters of the word with underscores
+    function hideWord(){
+        for (var letter = 0; letter < targetWord.length; letter++){
+            
+            displayWord.push(targetWord[letter]);
+            console.log(displayWord);
+        }
+
+    };
+    hideWord();
 
 
 
 });
 
 
-
-//i need a random word from the word bank
 
 //i need a way to represent how many letters are in the word
 //displayword = ["_"];

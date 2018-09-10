@@ -26,34 +26,34 @@ $(document).ready(function(){
     //function to pick a random word from foods array
     function randomWord(){
         targetWord = foods[Math.floor(Math.random() * foods.length)];
-        $("#random-word").text(targetWord);
-
+        console.log(targetWord);
     };
 
     randomWord();
 
     //function to replace the letters of the word with underscores
     function hideWord(){
-        for (var letter = 0; letter < targetWord.length; letter++){
-            
+        for (var letter = 0; letter < targetWord.length; letter++){    
             displayWord.push(targetWord[letter]);
             console.log(displayWord);
+            for (var i=0; i < displayWord.length; i++){
+                displayWord[i] = "_ ";
+            }
+            var newWord = displayWord.join("");
+            newWord = newWord.split(",");
+            $("#random-word").text(newWord);
         }
-
     };
+
     hideWord();
+
+    
 
 
 
 });
 
 
-
-//i need a way to represent how many letters are in the word
-//displayword = ["_"];
-//will start with a bunch of "_";
-
-//i need to display this to the user
 
 //TODO: keep track of guesses
 

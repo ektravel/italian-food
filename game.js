@@ -30,7 +30,7 @@ $(document).ready(function(){
     var remainingGuesses = 12;
 
     //variable to hold wins
-    var wins;
+    var wins = 0;
 
     //variable to hold losses
     var losses;
@@ -38,36 +38,28 @@ $(document).ready(function(){
     $("#remainingGuesses").text(remainingGuesses);
 
     //function to pick a random word from foods array
-    function randomWord(){
+    function pickRandomWord(){
         targetWord = foods[Math.floor(Math.random() * foods.length)];
         console.log(targetWord);
+
+        targetWord = targetWord.split("");
     };
 
-    randomWord();
+    pickRandomWord();
+
+    function updateTargetWord() {
+        $("#random-word").text(displayWord.join(''));
+    } 
 
     //function to replace the letters of the word with underscores
     function hideWord(){
-        // for (var letter = 0; letter < targetWord.length; letter++){    
-            // displayWord.push(targetWord[letter]);
-            // console.log(displayWord);
-            // for (var i=0; i < displayWord.length; i++){
-            //     displayWord[i] = "_ ";
-            // }
-            // var newWord = displayWord.join("");
-            // newWord = newWord.split(",");
-            // $("#random-word").text(newWord);
-
-
-        // }
-
-        displayWord = targetWord.split("");
-        console.log(displayWord);
+        displayWord = targetWord.slice();
         for (var i=0; i < displayWord.length; i++){
                 displayWord[i] = "_ ";
         }
-        displayWord = displayWord.join("").split(","); 
-        $("#random-word").text(displayWord);
-
+        updateTargetWord();
+        // $("#random-word").text(displayWord.join(''));
+        // $("#random-word").text(displayWord.join('').split(','));
     };
 
     hideWord();
@@ -76,8 +68,7 @@ $(document).ready(function(){
     function updateGuessCount(){
         remainingGuesses--;
         $("#remainingGuesses").text(remainingGuesses);
-    }
-
+    };
 
     $("body").keypress(function(event){
         console.log(event.key);
@@ -89,25 +80,39 @@ $(document).ready(function(){
             return false;
         }
 
-        //check if the user guessed correctly
-        //incorrect guess
-        if (targetWord.indexOf(pressedKey) === -1){
-            alert("This letter is not in the word!");
-            updateGuessCount();
-        //correct guess
-        }else{
-            alert("That is correct");
-            var guessedLetter = targetWord.indexOf(pressedKey);
-            $("#random-word").text(displayWord[guessedLetter]);
+        var correctGuess = false;
+        for(i = 0; i < targetWord.length; i++){
+            if(targetWord[i] === pressedKey){
+                displayWord[i] = pressedKey;
+                correctGuess = true;
+            }
         }
+
+        if(correctGuess)
+            updateTargetWord();
+        else
+            updateGuessCount();
+
+        //check if the user won the game and update wins
+        if (displayWord.indexOf("_ ") === -1){
+            wins++;
+            $("#wins").text(wins);
+            setTimeout (function() {
+                alert("Congratulations! You won!");
+            }, 300);
+        }
+
+        //check if the user lost the game and update losses
+        if (remainingGuesses === 0){
+            alert("You lost!");
+            losses++;
+        }
+
+
     })
-
-
-
 });
 
 
-//yes, update the displayWord to have the guessed letter in the right slot
 
 
 

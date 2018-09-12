@@ -4,6 +4,12 @@ body, html {
 
 h1 {
     padding-top: 30px;
+    font-size: 64px;
+    font-family: 'Lobster', cursive;
+}
+
+h2 {
+    font-family: 'Lobster', cursive;
 }
 
 .bg {
@@ -22,9 +28,11 @@ h1 {
 .card{
     background-color: white;
     opacity: 0.8;
+    font-family: 'Merienda', cursive;
+    font-size: 28px;
 }
 
 .card-body {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.925);
     opacity: 0.8;
 }

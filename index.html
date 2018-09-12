@@ -6,39 +6,51 @@
     <title>Word-Guess Game</title>
     <!-- Bootstrap File -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 
 <body>
-    <div class = "container">
-        <h1>It's Italian!</h1>
-        <h2>Italian Food Word-Guessing Game</h2>
-        <p>Press any letter to start playing.</p>
+    <div class="container-fluid bg text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h1>It's Italian!</h1>
+                <h2>Italian Food Word-Guessing Game</h2>
+                <p>Press any letter to start playing.</p>
 
-        <div class = "card">
-            <div class = "card-header">
-                <h3 class = "card-title">
+                <div class="card border-dark mx-auto w-50">
+                    <div class="card-header bg-transparent border-dark">
+                        <h3 class="card-title text-center">
+                            <!-- Display a random word here  -->
+                            <span id="random-word"></span>
+                        </h3>
+                    </div>
 
-                    <!-- Display a random word here  -->
-                    <span id="random-word"></span>
+                    <div class="card-body">
 
-                </h3>
+                        <!-- Display number of guesses left -->
+                        <p class="font-weight-bold">Remaining Guesses:
+                            <span id="remainingGuesses"></span>
+                        </p>
+
+                        <!-- Display wins -->
+                        <p class="font-weight-bold">Wins:
+                            <span id="wins"></span>
+                        </p>
+
+                        <!-- Display losses  -->
+                        <p class="font-weight-bold">Losses:
+                            <span id="losses"></span>
+                        </p>
+                    </div>
+
+
+                </div>
+
             </div>
-        </div>
 
-        <div class="card-body">
-            
-            <!-- Display number of guesses left -->
-            <p>Remaining Guesses: <span id="remainingGuesses"></span></p>
-
-            <!-- Display wins -->
-            <p>Wins: <span id="wins"></span></p>
-
-            <!-- Display losses  -->
-            <p>Losses: <span id="losses"></span></p>
         </div>
 
     </div>

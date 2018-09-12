@@ -1,0 +1,30 @@
+body, html {
+    height: 100%;
+}
+
+h1 {
+    padding-top: 30px;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("assets/pasta.jpeg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card{
+    background-color: white;
+    opacity: 0.8;
+}
+
+.card-body {
+    background-color: white;
+    opacity: 0.8;
+}
